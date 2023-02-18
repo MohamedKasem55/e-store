@@ -1,0 +1,100 @@
+$primaryColor:rgb(100, 0, 0);
+$secondaryColor:rgb(64,64,64);
+select{
+    width: 65%; 
+    color: black;
+    font-size: 20px;
+    border: none;
+
+}
+.select-wrapper{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+select:focus{
+    outline: none;
+}
+option{
+    color: black;
+    font-size: 20px;
+    
+}
+option:focus{
+    background-color: $secondaryColor;
+}
+.wrapper{
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    width: 100%;
+}
+*{
+    color:white;
+    font-size: 10px;
+}
+.pag-wrapper{
+    margin-top: 50px;
+
+}
+@media only screen and (min-width: 768px)  and (max-width:1024px){
+    select{
+        width: 80%; 
+        color: black;
+        font-size: 20px;
+        align-self: flex-end;
+        border: none;
+        justify-self: flex-end;
+    
+    
+    }
+.select-wrapper{
+    justify-content: center;
+}
+*{
+    color:white;
+    font-size: 20px;
+}
+
+.wrapper{
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    width: 100%;
+}
+.pag-wrapper{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+}
+@media only screen and (min-width: 1024px)  {
+    select{
+        width: 30%; 
+        color: black;
+        font-size: 20px;
+        border: none;
+        
+    
+    }
+    .select-wrapper{
+        justify-content: center;
+    }
+    *{
+        color:white;
+        font-size: 30px;
+    }
+    
+    .wrapper{
+        display: flex;
+        flex-direction:row;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+    }
+    .pag-wrapper{
+        margin-top: 50px;
+        display: flex;
+        justify-content: center;
+    }
+}

@@ -1,0 +1,31 @@
+$primaryColor: rgb(100, 0, 0);
+$secondaryColor: rgb(64, 64, 64);
+
+.wrapper {
+ overflow: hidden;
+}
+.langwrapper {
+ background-image: url("https://libraryeuroparl.files.wordpress.com/2016/09/eprs-briefing-589794-regional-minority-languages-eu-final.jpg?w=350&h=200&crop=1");
+ background-repeat: no-repeat;
+ background-size: cover;
+}
+.overlay {
+ background-color: rgba(0, 0, 0, 0.8);
+ width: 100%;
+ display: flex;
+ justify-content: flex-end;
+}
+select {
+ border-radius: 10px;
+ background-color: $primaryColor;
+ height: 40px;
+ width: 100px;
+ color: white;
+ font-size: 18px;
+ margin: 10px;
+ padding: 0px 10px 0 10px;
+ cursor: pointer;
+}
+select:hover {
+ background-color: $secondaryColor;
+}

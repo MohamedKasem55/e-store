@@ -1,0 +1,9 @@
+<div class="wrapper">
+    <div class="overlay">
+        <button class="btn" (click)="logout()">{{"Logout"|translate}}</button>
+
+        <app-admin-products-page *ngIf="isAdmin|async"></app-admin-products-page>
+        <app-user-products-page *ngIf="!(isAdmin|async)"></app-user-products-page>
+
+    </div>
+</div>

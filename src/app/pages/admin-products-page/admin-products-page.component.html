@@ -1,0 +1,99 @@
+<div class="addwrapper">
+  <button class="btn addButton" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="addProduct()"> Add
+    Product</button>
+</div>
+<table class="table table-striped table-hover ">
+  <thead>
+    <tr>
+      <th scope="col"> {{"ID"|translate}} </th>
+      <th scope="col" style="width: 100px;"> {{"Title"|translate}} </th>
+      <th scope="col"> {{"Image"|translate}} </th>
+      <th scope="col"> {{"Price"|translate}} </th>
+      <th scope="col" class="tablet">{{"Category"|translate}}</th>
+      <th scope="col" class="tablet">{{"Rate"|translate}}</th>
+      <th scope="col" style="width: 100px;" class="laptop-show"> {{"Description"|translate}} </th>
+      <th scope="col"> {{"Update"|translate}} </th>
+      <th scope="col"> {{"Delete"|translate}} </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of allProducts">
+      <th scope="row">{{product.id}}</th>
+      <td>{{product.title}}</td>
+      <td>
+        <img [src]="product.image" alt="">
+      </td>
+      <td>{{product.price}}$</td>
+      <td class="tablet">{{product.category}}</td>
+      <td class="tablet" style="width: 20px;">
+        <!--         <ngx-star-rating [(ngModel)]="product.rating.rate" [id]="product.id" [disabled]="true">
+        </ngx-star-rating> -->
+        <!--  <star-rating (rate)="onRate($event)" value='5' totalstars="5" checkedcolor="red" uncheckedcolor="black"
+          size="24px" readonly="false">
+        </star-rating> -->
+        {{product.rating.rate}}
+
+      </td>
+      <td class="laptop-show">{{product.description|slice:0:100}}...</td>
+      <td>
+        <div data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="editProduct(product)">
+          <i class="fas fa-cog"></i>
+        </div>
+      </td>
+      <td><i class="fas fa-trash-alt" (click)="deleteProduct(product.id)"></i></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modalHeader">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+          (click)="modeChange()"></button>
+        <h5 id="exampleModalLabel">{{mode}}</h5>
+      </div>
+      <hr>
+      <div class="modal-body">
+        <form [formGroup]="productForm" (ngSubmit)="productSubmit()">
+          <div class="row">
+            <div class="col-8">
+              <div class="mb-3">
+                <label for="productTitle" class="form-label"> {{"Product Title"|translate}}: </label>
+                <input type="text" formControlName="productTitle" class="form-control" id="productTitle">
+              </div>
+              <div class="mb-3">
+                <label for="productPrice" class="form-label"> {{"Product Price"|translate}}: </label>
+                <input type="text" formControlName="productPrice" class="form-control" id="productPrice">
+              </div>
+            </div>
+            <div class="col-3" *ngIf="previewImage">
+              <label for="productTitle" class="form-label"> {{"Image Preview"|translate}}: </label> <br>
+              <img [src]="previewImage" style="width: 100px;height: 100px;object-fit: contain;" alt="">
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="productDescription" class="form-label"> {{"Product Description"|translate}}: </label>
+            <textarea type="text" formControlName="productDescription" class="form-control" id="productDescription">
+              </textarea>
+          </div>
+          <div class="mb-3">
+            <label for="productCategory" class="form-label"> {{"Product Category"|translate}}: </label>
+            <input type="text" formControlName="productCategory" class="form-control" id="productCategory">
+          </div>
+          <div class="mb-3">
+            <label for="productImage" class="form-label"> {{"Product Image"|translate}}: </label>
+            <input type="file" accept="image/*" formControlName="productImage" class="form-control" id="productImage">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn close" data-bs-dismiss="modal" (click)="modeChange()">
+              {{"Close"|translate}} </button>
+            <button type="submit" class="btn " data-bs-dismiss="modal"> {{"Save changes"|translate}} </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

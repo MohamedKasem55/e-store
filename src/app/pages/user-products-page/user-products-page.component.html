@@ -1,0 +1,28 @@
+<!--     <input style="color: black;" type="text" [(ngModel)]="searchKeyWord" >
+ -->
+<div class="select-wrapper">
+    <select (change)="onCategoryChange($event.target.value)" class="form-select-lg">
+        <option value='all' hidden selected> {{"Select a Category"|translate}} </option>
+        <option value="all"> {{"All Categories"|translate}} </option>
+        <option *ngFor="let category of allCategories" [value]="category">{{category}}</option>
+
+    </select>
+</div>
+
+<div class="wrapper">
+
+    <div *ngFor="let product of allProducts | paginate:{
+        id:'listing-pagination',
+        itemsPerPage:6,
+        currentPage:page,
+        totalItems:totalRecords
+    }|filter:searchKeyWord">
+        <app-product-card [product]="product"></app-product-card>
+    </div>
+
+</div>
+<div class="pag-wrapper">
+
+    <pagination-controls id="listing-pagination" maxSize="6" directionLinks="true" (pageChange)="page=$event">
+    </pagination-controls>
+</div>

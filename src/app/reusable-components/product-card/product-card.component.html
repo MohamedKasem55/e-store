@@ -1,0 +1,14 @@
+<div class="item">
+  <div class="img-wrapper">
+    <img [src]="product.image">
+  </div>
+  <div>
+    <h5>{{product.title|slice:0:80}}</h5>
+    <p> {{"Category"|translate}} : {{product.category}}</p>
+    <p>{{product.description|slice:0:100}}...</p>
+    <div class="d-flex flex-row justify-content-between">
+      <div><span>{{product.price}} $</span></div>
+      <div><span> {{"Rate"|translate}} : {{product.rating.rate}}</span></div>
+    </div>
+  </div>
+</div>
